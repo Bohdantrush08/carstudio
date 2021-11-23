@@ -1,4 +1,4 @@
-package com.nazar.carstudio.nazarcontroller;
+package com.nazar.carstudio.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,30 +23,35 @@ public class NazarController {
         map.put("BMW", "NOT norm car");
         map.put("Audi", "NORM car");
         map.put("Ziguli", "THE BEST");
-
+        
+        String value = "Another car";
+        
         if (key.equalsIgnoreCase("BMW")) {
-            key = map.get("BMW");
+            value = map.get("BMW");
         } else if (key.equalsIgnoreCase("Audi")) {
-            key = map.get("Audi");
+            value = map.get("Audi");
         } else if (key.equalsIgnoreCase("Ziguli")) {
-            key = map.get("Ziguli");;
+            value = map.get("Ziguli");;
         }
-        return key;
+        return value;
     }
 
     @GetMapping("/queryPar")
-    public String getQueryPar(@RequestParam Integer num1, @RequestParam Integer num2, @RequestParam String operation) {
-        int sum;
+    public String getQueryPar(@RequestParam Double num1, @RequestParam Double num2, @RequestParam String operation) {
+        Double result = 0d;
+        
         if (operation.equalsIgnoreCase("add")) {
-            sum = num1 + num2;
-            return "suma " + sum;
+            result = num1 + num2;
         } else if (operation.equalsIgnoreCase("mult")) {
-            sum = num1 * num2;
-            return "suma " + sum;
+            result = num1 * num2;
         } else if (operation.equalsIgnoreCase("minus")) {
-            sum = num1 - num2;
-            return "suma " + sum;
+            result = num1 - num2;
+        } else if (operation.equalsIgnoreCase("divide")) {
+            if (num2 == 0){
+                return "Can't divide by zero";
+            }
+            result = num1 / num2;
         }
-        return operation;
+        return result.toString();
     }
 }
