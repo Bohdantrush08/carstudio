@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.nazar.carstudio.service.IndexService;
 
 
@@ -21,21 +20,13 @@ public class IndexController {
     }
     
     @GetMapping("/pathVar/{id}")
-    public String getWithPathVariable(@PathVariable Integer  id) {
-        return indexService.getWithPathVariable(id);
+    public String getCheckId(@PathVariable Integer  id) {
+        return indexService.getCheckId(id);
     }
 
     @GetMapping("/queryParam")
-    public String getWithQueryParam(@RequestParam Integer age, @RequestParam String name) {
-        String result;
-       
-        if(age > 20){
-            result = "Old " + name + " " + age;
-        }
-        else
-            result = "Young " + name + " " + age;
-        
-        return result;
+    public String getControlAge(@RequestParam Integer age, @RequestParam String name) {
+        return indexService.getControlAge(age,name);
     }
     
 }
