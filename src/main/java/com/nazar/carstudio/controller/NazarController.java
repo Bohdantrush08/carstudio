@@ -11,23 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class NazarController {
 
     @Autowired
-    private final NazarService nazarService;
-
-    public NazarController(NazarService nazarService) {
-        this.nazarService = nazarService;
-    }
+    private NazarService nazarService;
 
     @GetMapping("/users")
     public String getStatus() {
         return "Hello!";
     }
 
-    @GetMapping("/pathVariable/{key}")
+    @GetMapping("/getCarKlichka/{key}")
     public String getCarKlichka(@PathVariable String key) {
         return nazarService.getCarKlichka(key);
     }
 
-    @GetMapping("/queryPar")
+    @GetMapping("/getResultArithmeticOperation")
     public String getResultArithmeticOperation(@RequestParam Double num1, @RequestParam Double num2, @RequestParam String operation) {
        return nazarService.getResultArithmeticOperation(num1,num2,operation);
     }

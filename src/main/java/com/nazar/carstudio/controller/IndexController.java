@@ -19,12 +19,12 @@ public class IndexController {
         return "Hello world!";
     }
     
-    @GetMapping("/pathVar/{id}")
+    @GetMapping("/getCheckId/{id}")
     public String getCheckId(@PathVariable Integer  id) {
         return indexService.getCheckId(id);
     }
 
-    @GetMapping("/queryParam")
+    @GetMapping("/getControlAge")
     public String getControlAge(@RequestParam Integer age, @RequestParam String name) {
         return indexService.getControlAge(age,name);
     }
