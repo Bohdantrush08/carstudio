@@ -5,10 +5,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nazar.carstudio.service.IndexService;
+
 
 @RestController
 public class IndexController {
    
+    IndexService indexService = new IndexService();
+    
     @GetMapping("/index")
     public String getIndex() {
         return "Hello world!";
@@ -16,13 +20,7 @@ public class IndexController {
     
     @GetMapping("/pathVar/{id}")
     public String getWithPathVariable(@PathVariable Integer  id) {
-        if (id == 1){
-            return "this is 1";
-        }
-        else if (id == 2 ){
-            return "this is 2";
-        }
-        else return "not 1 and not 2";
+        return indexService.getWithPathVariable(id);
     }
 
     @GetMapping("/queryParam")
