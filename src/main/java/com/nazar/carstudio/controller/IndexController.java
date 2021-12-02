@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.nazar.carstudio.service.IndexService;
 
-
 @RestController
 public class IndexController {
     
@@ -19,14 +18,23 @@ public class IndexController {
         return "Hello world!";
     }
     
-    @GetMapping("/getCheckId/{id}")
+    @GetMapping("/CheckId/{id}")
     public String getCheckId(@PathVariable Integer  id) {
         return indexService.getCheckId(id);
     }
 
-    @GetMapping("/getControlAge")
+    @GetMapping("/ControlAge")
     public String getControlAge(@RequestParam Integer age, @RequestParam String name) {
-        return indexService.getControlAge(age,name);
+        return indexService.getControlAge(age, name);
     }
-    
+
+    @GetMapping("/getCarKlichka/{key}")
+    public String getCarKlichka(@PathVariable String key) {
+        return indexService.getCarKlichka(key);
+    }
+
+    @GetMapping("/getResultArithmeticOperation")
+    public String getResultArithmeticOperation(@RequestParam Double num1, @RequestParam Double num2, @RequestParam String operation) {
+        return indexService.getResultArithmeticOperation(num1, num2, operation);
+    }
 }
